@@ -30,7 +30,7 @@
    }
    ```
 
-2. 在《英雄联盟》的世界中，有一个叫 “提莫” 的英雄，他的攻击可以让敌方英雄艾希（编者注：寒冰射手）进入中毒状态。现在，给出提莫对艾希的攻击时间序列和提莫攻击的中毒持续时间，你需要输出艾希的中毒状态总时长。
+2. 在《英雄联盟》的世界中，有一个叫 “提莫”的英雄，他的攻击可以让敌方英雄艾希（编者注：寒冰射手）进入中毒状态。现在，给出提莫对艾希的攻击时间序列和提莫攻击的中毒持续时间，你需要输出艾希的中毒状态总时长。
 
    你可以认为提莫在给定的时间点进行攻击，并立即使艾希处于中毒状态。
 
@@ -132,7 +132,7 @@
    ```
    输入:
    [4,3,2,7,8,2,3,1]
-
+   
    输出:
    [2,3]
    ```
@@ -152,9 +152,10 @@
       return arr;
    };
    ```
+
    > [查看详情](https://leetcode-cn.com/problems/find-all-duplicates-in-an-array/solution/you-ya-shi-xian-yuan-di-ha-xi-qiao-yong-p8p43/) | leetcode
 
-2. 给定一个范围在  1 ≤ a[i] ≤ n ( n = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。
+2. 给定一个范围在  1 ≤ a[i] ≤ n ( n = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。
 
    找到所有在 [1, n] 范围之间没有出现在数组中的数字。
 
@@ -163,7 +164,6 @@
    ```
    输入:
    [4,3,2,7,8,2,3,1]
-
    输出:
    [5,6]
    ```
@@ -185,6 +185,7 @@
       return arr;
    };
    ```
+
    > [查看详情](https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array/solution/448-zhao-dao-suo-you-shu-zu-zhong-xiao-s-4njf/) | leetcode
 
 3. 集合 s 包含从 1 到 n 的整数。不幸的是，因为数据错误，导致集合里面某一个数字复制了成了集合里面的另外一个数字的值，导致集合 丢失了一个数字 并且 有一个数字重复 。
@@ -215,11 +216,12 @@
       return [target, i + 1];
    };
    ```
+
    > [查看详情](https://leetcode-cn.com/problems/set-mismatch/solution/cuo-wu-de-ji-he-by-leetcode/) | leetcode
 
-3. 给定一个非空且只包含非负数的整数数组 nums，数组的度的定义是指数组里任一元素出现频数的最大值。
+4. 给定一个非空且只包含非负数的整数数组 nums，数组的度的定义是指数组里任一元素出现频数的最大值。
 
-   你的任务是在 nums 中找到与 nums 拥有相同大小的度的最短连续子数组，返回其长度。
+   你的任务是在 nums 中找到与 nums 拥有相同大小的度的最短连续子数组，返回其长度。
 
    ```
    输入：[1, 2, 2, 3, 1]
@@ -250,17 +252,18 @@
             } else if (obj[nums[i]][0] === max) {
                minLen = Math.min(obj[nums[i]][2] - obj[nums[i]][1], minLen)
             }
-
+   
          }
       }
       return minLen + 1;
    };
    ```
+
    > [查看详情](https://leetcode-cn.com/problems/degree-of-an-array/solution/zhi-pao-yi-ci-xun-huan-bian-pao-bian-ji-lu-li-yong/) | leetcode
 
-4. 给你一个未排序的整数数组 nums ，请你找出其中没有出现的最小的正整数。
+5. 给你一个未排序的整数数组 nums ，请你找出其中没有出现的最小的正整数。
 
-   进阶：你可以实现时间复杂度为 O(n) 并且只使用常数级别额外空间的解决方案吗？
+   进阶：你可以实现时间复杂度为 O(n) 并且只使用常数级别额外空间的解决方案吗？
 
    ```
    输入：nums = [3,4,-1,1]
@@ -286,11 +289,12 @@
       return nums.length + 1;
    };
    ```
+
    > [查看详情](https://leetcode-cn.com/problems/first-missing-positive/solution/que-shi-de-di-yi-ge-zheng-shu-by-leetcode-solution/) | leetcode
 
-5. 给定一位研究者论文被引用次数的数组（被引用次数是非负整数）。编写一个方法，计算出研究者的 h 指数。
+6. 给定一位研究者论文被引用次数的数组（被引用次数是非负整数）。编写一个方法，计算出研究者的 h 指数。
 
-   h 指数的定义：h 代表“高引用次数”（high citations），一名科研人员的 h 指数是指他（她）的 （N 篇论文中）总共有 h 篇论文分别被引用了至少 h 次。且其余的 N - h 篇论文每篇被引用次数 不超过 h 次。
+   h 指数的定义：h 代表“高引用次数”（high citations），一名科研人员的 h 指数是指他（她）的 （N 篇论文中）总共有 h 篇论文分别被引用了至少 h 次。且其余的 N - h 篇论文每篇被引用次数 不超过 h 次。
 
    例如：某人的 h 指数是 20，这表示他已发表的论文中，每篇被引用了至少 20 次的论文总共有 20 篇。
 
@@ -316,6 +320,7 @@
       return count;
    }
    ```
+
    > [查看详情](https://leetcode-cn.com/problems/h-index/) | leetcode
 
 **数组中的改变、移动**
@@ -342,12 +347,12 @@
       return count;
    }
    ```
-   
+
    > [查看详情](https://leetcode-cn.com/problems/minimum-moves-to-equal-array-elements/solution/zui-xiao-yi-dong-ci-shu-shi-shu-zu-yuan-su-xiang-d/) | leetcode
 
-2. 给你一个长度为 n 的整数数组，请你判断在 最多 改变 1 个元素的情况下，该数组能否变成一个非递减数列。
+2. 给你一个长度为 n 的整数数组，请你判断在 最多 改变 1 个元素的情况下，该数组能否变成一个非递减数列。
 
-   我们是这样定义一个非递减数列的： 对于数组中任意的 i (0 <= i <= n-2)，总满足 nums[i] <= nums[i + 1]。
+   我们是这样定义一个非递减数列的： 对于数组中任意的 i (0 <= i <= n-2)，总满足 nums[i] <= nums[i + 1]。
 
    ```
    输入: nums = [4,2,3]
@@ -376,12 +381,9 @@
 3. 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
 
    ```
-   示例:
-
    输入: [0,1,0,3,12]
    输出: [1,3,12,0,0]
    说明:
-
    必须在原数组上操作，不能拷贝额外的数组。
    尽量减少操作次数。
    ```
@@ -406,20 +408,99 @@
 
    > [查看详情](https://leetcode-cn.com/problems/move-zeroes/solution/dong-hua-yan-shi-283yi-dong-ling-by-wang_ni_ma/342802) | leetcode
 
+**二维数组及滚动数组**
+
+1. 给定一个非负整数 numRows，生成杨辉三角的前 numRows 行。
+
+   ```
+   输入: 5
+   输出:
+   [
+        [1],
+       [1,1],
+      [1,2,1],
+     [1,3,3,1],
+    [1,4,6,4,1]
+   ]
+   ```
+
+   ```js
+   const generate = (numRows) => {
+      const nums = [];
+      for (let i = 0; i < numRows; i++) {
+         const arr = [];
+         arr[0] = 1;
+         arr[i] = 1;
+         for (let j = 1; j < i; j++) {
+            arr[j] = nums[i - 1][j - 1] + nums[i - 1][j];
+         }
+         nums.push(arr);
+      }
+      return nums;
+   };
+   ```
+
+   > [查看详情](https://leetcode-cn.com/problems/pascals-triangle/solution/yang-hui-san-jiao-by-leetcode-solution-lew9/) | leetcode
+
+2. 
+
+3. 包含整数的二维矩阵 M 表示一个图片的灰度。你需要设计一个平滑器来让每一个单元的灰度成为平均灰度 (向下舍入) ，平均灰度的计算是周围的8个单元和它本身的值求平均，如果周围的单元格不足八个，则尽可能多的利用它们。
+
+   ```
+   输入:
+   [[1,1,1],
+    [1,0,1],
+    [1,1,1]]
+   输出:
+   [[0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0]]
+   解释:
+   对于点 (0,0), (0,2), (2,0), (2,2): 平均(3/4) = 平均(0.75) = 0
+   对于点 (0,1), (1,0), (1,2), (2,1): 平均(5/6) = 平均(0.83333333) = 0
+   对于点 (1,1): 平均(8/9) = 平均(0.88888889) = 0
+   ```
+
+   ```js
+   const imageSmoother = (img) => {
+      const x = img.length, y = img[0].length;
+      const nums = Array(x).fill().map(() => Array(y).fill());
+      for (let i = 0; i < x; i++) {
+         for (let j = 0; j < y; j++) {
+            let l = r = i, t = b = j;
+            if (i >= 1) l = i - 1;
+            if (i < x - 1) r = i + 1;
+            if (j >= 1) t = j - 1;
+            if (j < y - 1) b = j + 1;
+            let sum = 0, count = (r - l + 1) * (b - t + 1);
+            for (let i = l; i <= r; i++) {
+               for (let j = t; j <= b; j++) {
+                  sum += img[i][j];
+               }
+            }
+            nums[i][j] = Math.floor(sum / count);
+         }
+      }
+      return nums;
+   };
+   ```
+
+   > [查看详情](https://leetcode-cn.com/problems/image-smoother/solution/100-zhao-dao-shang-xia-xian-yu-zuo-you-xian-by-ooo/) | leetcode
+
+
 **旋转数组**
 
 1. 给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。
 
    ```
    示例:
-
    输入: nums = [1,2,3,4,5,6,7], k = 3
    输出: [5,6,7,1,2,3,4]
    解释:
    向右旋转 1 步: [7,1,2,3,4,5,6]
    向右旋转 2 步: [6,7,1,2,3,4,5]
    向右旋转 3 步: [5,6,7,1,2,3,4]
-
+   
    ```
 
    ```js
@@ -430,7 +511,7 @@
          end--;
       }
    }  
-
+   
    // 先旋转数组一次，再旋转 k 位置两侧的数组项
    const rotate = (nums, k) => {
       const len = nums.length;
@@ -444,26 +525,21 @@
 
    > [查看详情](https://leetcode-cn.com/problems/rotate-array/solution/xuan-zhuan-shu-zu-by-leetcode-solution-nipk/) | leetcode
 
-2. 给定一个长度为 n 的整数数组 A 。
+2. 给定一个长度为 n 的整数数组 A 。
 
-   假设 Bk 是数组 A 顺时针旋转 k 个位置后的数组，我们定义 A 的“旋转函数” F 为： 
+   假设 Bk 是数组 A 顺时针旋转 k 个位置后的数组，我们定义 A 的“旋转函数” F 为： 
 
    F(k) = 0 * Bk[0] + 1 * Bk[1] + ... + (n-1) * Bk[n-1]。 
 
    计算F(0), F(1), ..., F(n-1)中的最大值。
 
    ```
-   示例:
-
    A = [4, 3, 2, 6]  
-
    F(0) = (0 * 4) + (1 * 3) + (2 * 2) + (3 * 6) = 0 + 3 + 4 + 18 = 25
    F(1) = (0 * 6) + (1 * 4) + (2 * 3) + (3 * 2) = 0 + 4 + 6 + 6 = 16
    F(2) = (0 * 2) + (1 * 6) + (2 * 4) + (3 * 3) = 0 + 6 + 8 + 9 = 23
    F(3) = (0 * 3) + (1 * 2) + (2 * 6) + (3 * 4) = 0 + 2 + 12 + 12 = 26  
-
    所以 F(0), F(1), F(2), F(3) 中的最大值是 F(3) = 26 。
-
    ```
 
    ```js
