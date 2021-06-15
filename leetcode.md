@@ -442,7 +442,28 @@
 
    > [查看详情](https://leetcode-cn.com/problems/pascals-triangle/solution/yang-hui-san-jiao-by-leetcode-solution-lew9/) | leetcode
 
-2. 
+2. 给定一个非负索引 k，其中 k ≤ 33，返回杨辉三角的第 k 行。
+
+   ```
+   输入: 3
+   输出: [1,3,3,1]
+   ```
+
+   ```js
+   const getRow = (rowIndex) => {
+      const arr = [];
+      arr[0] = 1;
+      for (let i = 1; i < rowIndex + 1; i++) {
+         arr[i] = 1;
+         for (let j = i - 1; j >= 1; j--) {
+            arr[j] = arr[j] + arr[j - 1]
+         }
+      }
+      return arr;
+   };
+   ```
+
+   > [查看详情](https://leetcode-cn.com/problems/pascals-triangle-ii/solution/yang-hui-san-jiao-ii-by-leetcode-solutio-shuk/) | leetcode
 
 3. 包含整数的二维矩阵 M 表示一个图片的灰度。你需要设计一个平滑器来让每一个单元的灰度成为平均灰度 (向下舍入) ，平均灰度的计算是周围的8个单元和它本身的值求平均，如果周围的单元格不足八个，则尽可能多的利用它们。
 
