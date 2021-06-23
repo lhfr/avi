@@ -656,3 +656,39 @@
    ```
 
    > [查看详情](https://leetcode-cn.com/problems/rotate-function/solution/oncuo-wei-xiang-jian-by-xiaohu9527-ftzh/) | leetcode
+
+**特定顺序遍历二维数组**
+
+1. 给你一个 m 行 n 列的矩阵 matrix，请按照 顺时针螺旋顺序 ，返回矩阵中的所有元素。
+
+   ```
+   输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
+   输出：[1,2,3,6,9,8,7,4,5]
+   ```
+
+   ```js
+   const spiralOrder = (matrix) => {
+      let left = 0, right = matrix[0].length - 1, top = 0, bottom = matrix.length - 1;
+      const res = [];
+      while (left <= right && top <= bottom) {
+         for (let j = left; j <= right; j++) {
+            res.push(matrix[left][j])
+         }
+         for (let i = top + 1; i <= bottom; i++) {
+            res.push(matrix[i][right])
+         }
+         if (left < right && top < bottom) {
+            for (let j = right - 1; j > left; j--) {
+               res.push(matrix[bottom][j])
+            }
+            for (let i = bottom; i > top; i--) {
+               res.push(matrix[i][left])
+            }
+         }
+         [left, right, top, bottom] = [++left, --right, ++top, --bottom]
+      }
+      return res;
+   };
+   ```
+
+   > [查看详情](https://leetcode-cn.com/problems/spiral-matrix/solution/luo-xuan-ju-zhen-by-leetcode-solution/) | leetcode
