@@ -692,3 +692,39 @@
    ```
 
    > [查看详情](https://leetcode-cn.com/problems/spiral-matrix/solution/luo-xuan-ju-zhen-by-leetcode-solution/) | leetcode
+
+
+2. 给你一个正整数 n ，生成一个包含 1 到 n2 所有元素，且元素按顺时针顺序螺旋排列的 n x n 正方形矩阵 matrix 。
+
+   ```
+   输入：n = 3
+   输出：[[1,2,3],[8,9,4],[7,6,5]]
+   ```
+
+   ```js
+   const generateMatrix = (n) => {
+      let top = 0, bottom = n - 1, left = 0, right = n - 1;
+      let count = 0
+      const res = Array(n).fill(0).map(v => Array(n).fill(0))
+      while (left <= right && top <= bottom) {
+         for (let j = left; j <= right; j++) {
+            res[top][j] = ++count;
+         }
+         for (let i = top + 1; i <= bottom; i++) {
+            res[i][right] = ++count;
+         }
+         if (left < right && top < bottom) {
+            for (let j = right - 1; j > left; j--) {
+               res[bottom][j] = ++count;
+            }
+            for (let i = bottom; i > top; i--) {
+               res[i][left] = ++count;
+            }
+         }
+         [top, bottom, left, right] = [++top, --bottom, ++left, --right]
+      }
+      return res;
+   };
+   ```
+
+   > [查看详情](https://leetcode-cn.com/problems/spiral-matrix-ii/solution/luo-xuan-ju-zhen-ii-by-leetcode-solution-f7fp/) | leetcode
