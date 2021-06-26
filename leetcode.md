@@ -728,3 +728,43 @@
    ```
 
    > [查看详情](https://leetcode-cn.com/problems/spiral-matrix-ii/solution/luo-xuan-ju-zhen-ii-by-leetcode-solution-f7fp/) | leetcode
+
+3. 给定一个含有 M x N 个元素的矩阵（M 行，N 列），请以对角线遍历的顺序返回这个矩阵中的所有元素，对角线遍历如下图所示。
+
+   ```
+   输入:
+   [
+    [ 1, 2, 3 ],
+    [ 4, 5, 6 ],
+    [ 7, 8, 9 ]
+   ]
+
+   输出:  [1,2,4,7,5,3,6,8,9]
+   ```
+
+   ```js
+   const findDiagonalOrder = (mat) => {
+      const rows = mat.length, cols = mat[0].length;
+      let i = 0, j = 0, k = 0, flag = true;
+      const res = [];
+      while (i < rows && j < cols) {
+         res[k++] = mat[i][j];
+         let _i = flag ? i - 1 : i + 1;
+         let _j = flag ? j + 1 : j - 1;
+         if (_i < 0 || _i === rows || _j < 0 || _j === cols) {
+            if (flag) {
+               j < cols - 1 ? j++ : i++;
+            } else {
+               i < rows - 1 ? i++ : j++;
+            }
+            flag = !flag;
+         } else {
+            i = _i;
+            j = _j;
+         }
+      };
+      return res;
+   }
+   ```
+
+   > [查看详情](https://leetcode-cn.com/problems/diagonal-traverse/solution/dui-jiao-xian-bian-li-by-leetcode/) | leetcode
