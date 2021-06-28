@@ -768,3 +768,47 @@
    ```
 
    > [查看详情](https://leetcode-cn.com/problems/diagonal-traverse/solution/dui-jiao-xian-bian-li-by-leetcode/) | leetcode
+
+**二维数组变换**
+
+   1. 在MATLAB中，有一个非常有用的函数 reshape，它可以将一个矩阵重塑为另一个大小不同的新矩阵，但保留其原始数据。
+
+      给出一个由二维数组表示的矩阵，以及两个正整数r和c，分别表示想要的重构的矩阵的行数和列数。
+
+      重构后的矩阵需要将原始矩阵的所有元素以相同的行遍历顺序填充。      
+
+      如果具有给定参数的reshape操作是可行且合理的，则输出新的重塑矩阵；否则，输出原始矩阵。
+
+      ```
+      输入: 
+      nums = 
+      [[1,2],
+       [3,4]]
+      r = 1, c = 4
+      输出: 
+      [[1,2,3,4]]
+      ```   
+
+      ```js
+      const matrixReshape = (mat, r, c) => {
+         const rows = mat.length, cols = mat[0].length;
+         if (rows * cols !== r * c) return mat;
+         const res = Array(r).fill(0).map(() => Array(c).fill(0));
+         let _i = 0, _j = 0;
+         for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < cols; j++) {
+               res[_i][_j] = mat[i][j];
+               if (_j < c - 1) {
+                  _j++;
+               } else {
+                  _i++;
+                  _j = 0;
+               }
+            }
+         }
+         return res;
+      };
+      ```   
+
+      > [查看详情](https://leetcode-cn.com/problems/reshape-the-matrix/solution/zhong-su-ju-zhen-by-leetcode-solution-gt0g/) | leetcode
+
