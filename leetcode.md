@@ -812,3 +812,30 @@
 
       > [查看详情](https://leetcode-cn.com/problems/reshape-the-matrix/solution/zhong-su-ju-zhen-by-leetcode-solution-gt0g/) | leetcode
 
+   2. 给定一个 n × n 的二维矩阵 matrix 表示一个图像。请你将图像顺时针旋转 90 度。
+
+      你必须在 原地 旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要 使用另一个矩阵来旋转图像。
+
+      ```
+      输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
+      输出：[[7,4,1],[8,5,2],[9,6,3]]
+      ```
+
+      ```js
+      const rotate = (matrix) => {
+         const rows = matrix.length, cols = matrix[0].length;
+         for (let i = 0; i < Math.floor(rows / 2); i++) {
+            for (let j = 0; j < cols; j++) {
+               [matrix[i][j], matrix[rows - 1 - i][j]] = [matrix[rows - 1 - i][j], matrix[i][j]]
+            }
+         }
+         for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < i; j++) {
+               [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]]
+            }
+         }
+         return matrix;
+      };
+      ```
+      
+      > [查看详情](https://leetcode-cn.com/problems/rotate-image/solution/xuan-zhuan-tu-xiang-by-leetcode-solution-vu3m/) | leetcode
