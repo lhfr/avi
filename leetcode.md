@@ -839,3 +839,43 @@
       ```
       
       > [查看详情](https://leetcode-cn.com/problems/rotate-image/solution/xuan-zhuan-tu-xiang-by-leetcode-solution-vu3m/) | leetcode
+
+   3. 给定一个 m x n 的矩阵，如果一个元素为 0 ，则将其所在行和列的所有元素都设为 0 。请使用 原地 算法。
+
+      ```
+      输入：matrix = [[1,1,1],[1,0,1],[1,1,1]]
+      输出：[[1,0,1],[0,0,0],[1,0,1]]
+      ```
+
+      ```js
+      const setZeroes = (matrix) => {
+         const rows = matrix.length, cols = matrix[0].length;
+         let flagRow0 = false, flagCol0 = false
+         for (let j = 0; j < cols; j++) {
+            if (matrix[0][j] === 0) flagRow0 = true;
+         }
+         for (let i = 0; i < rows; i++) {
+            if (matrix[i][0] === 0) flagCol0 = true;
+         }
+         for (let i = 1; i < rows; i++) {
+            for (let j = 1; j < cols; j++) {
+               if (matrix[i][j] === 0)  matrix[i][0] = matrix[0][j] = 0;
+            }
+         }
+         for (let i = 1; i < rows; i++) {
+            for (let j = 1; j < cols; j++) {
+               if (matrix[0][j] === 0 || matrix[i][0] === 0) matrix[i][j] = 0;
+            }
+         }
+         for (let j = 0; j < cols; j++) {
+            if (flagRow0) matrix[0][j] = 0;
+         }
+         for (let i = 0; i < rows; i++) {
+            if (flagCol0) matrix[i][0] = 0;
+         }
+         return matrix;
+      };
+      ```
+
+      > [查看详情](https://leetcode-cn.com/problems/set-matrix-zeroes/solution/ju-zhen-zhi-ling-by-leetcode-solution-9ll7/) | leetcode
+
