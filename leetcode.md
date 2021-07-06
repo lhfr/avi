@@ -1008,6 +1008,32 @@
 
       > [查看详情](https://leetcode-cn.com/problems/range-sum-query-2d-immutable/solution/er-wei-qian-zhui-he-jian-dan-tui-dao-tu-sqekv/) | leetcode
 
+   3. 给你一个长度为 n 的整数数组 nums，其中 n > 1，返回输出数组 output ，其中 output[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积。
+
+
+      ```
+      输入: [1,2,3,4]
+      输出: [24,12,8,6]
+      ```
+
+      ```js
+      const productExceptSelf = (nums) => {
+         const len = nums.length, res = [];
+         res[0] = 1;
+         for (let i = 0; i < len - 1; i++) {
+            res[i + 1] = res[i] * nums[i];
+         }
+         for (let i = len - 1, r = 1; i >= 0; i--) {
+            res[i] *= r;
+            r *= nums[i];
+         }
+         return res;
+      };
+      ```
+
+      > [查看详情](https://leetcode-cn.com/problems/product-of-array-except-self/solution/chu-zi-shen-yi-wai-shu-zu-de-cheng-ji-by-leetcode-/) | leetcode
+      
+
 
 
 
