@@ -958,20 +958,55 @@
       ```js
       var NumArray = function(nums) {
          const len = nums.length, _nums = Array(len + 1).fill(0);
-         for (let i = 0, count = 0; i < len; i++) {
-            count += nums[i];
-            _nums[i + 1] = count;
+         for (let i = 0; i < len; i++) {
+            _nums[i + 1] = _nums[i] + nums[i];
          }
          this._nums = _nums;
       };    
 
       NumArray.prototype.sumRange = function(left, right) {
-         const _nums = this._nums;
-         return _nums[right + 1] - _nums[left];
+         const nums = this._nums;
+         return nums[right + 1] - nums[left];
       };
       ```
 
       > [查看详情](https://leetcode-cn.com/problems/range-sum-query-immutable/solution/qu-yu-he-jian-suo-shu-zu-bu-ke-bian-by-l-px41/) | leetcode
+
+   2. 给定一个二维矩阵，计算其子矩形范围内元素的总和，该子矩阵的左上角为 (row1, col1) ，右下角为 (row2, col2) 。
+
+      ```
+      给定 matrix = [
+        [3, 0, 1, 4, 2],
+        [5, 6, 3, 2, 1],
+        [1, 2, 0, 1, 5],
+        [4, 1, 0, 1, 7],
+        [1, 0, 3, 0, 5]
+      ]     
+
+      sumRegion(2, 1, 4, 3) -> 8
+      sumRegion(1, 1, 2, 2) -> 11
+      sumRegion(1, 2, 2, 4) -> 12
+      ```
+
+      ```js
+      var NumMatrix = function(matrix) {
+         const rows = matrix.length, cols = matrix[0].length;
+         const nums = Array(rows + 1).fill(0).map(() => Array(cols + 1).fill(0));
+         for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < cols; j++) {
+               nums[i + 1][j + 1] = nums[i + 1][j] + nums[i][j + 1] - nums[i][j] + matrix[i][j];
+            }
+         }
+         this.nums = nums;
+      };    
+
+      NumMatrix.prototype.sumRegion = function(row1, col1, row2, col2) {
+         const nums = this.nums;
+         return nums[row2 + 1][col2 + 1] - nums[row2 + 1][col1] - nums[row1][col2 + 1] + nums[row1][col1];
+      };
+      ```
+
+      > [查看详情](https://leetcode-cn.com/problems/range-sum-query-2d-immutable/solution/er-wei-qian-zhui-he-jian-dan-tui-dao-tu-sqekv/) | leetcode
 
 
 
