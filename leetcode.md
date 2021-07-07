@@ -1091,6 +1091,42 @@
 
       > [查看详情](https://leetcode-cn.com/problems/valid-palindrome/solution/yan-zheng-hui-wen-chuan-by-leetcode-solution/) | leetcode
 
+**公共前缀**
+
+   1. 编写一个函数来查找字符串数组中的最长公共前缀。
+
+      如果不存在公共前缀，返回空字符串 ""。
+
+      ```
+      输入：strs = ["flower","flow","flight"]
+      输出："fl"
+      ```
+
+      ```js
+      const commonPrefix = (str1, str2) => {
+        const len = Math.min(str1.length, str2.length);
+        let str = '';
+        for (let i = 0; i < len; i++) {
+          if (str1[i] !== str2[i]) break;
+          str += str1[i]
+        }
+        return str;
+      }     
+
+      const longestCommonPrefix = (strs) => {
+        let str = strs[0];
+        for (let i = 1, len = strs.length; i < len; i++) {
+          str = commonPrefix(str, strs[i]);
+        }
+        return str;
+      }
+      ```
+
+      > [查看详情](https://leetcode-cn.com/problems/longest-common-prefix/solution/zui-chang-gong-gong-qian-zhui-by-leetcode-solution/) | leetcode
+
+**单词**
+
+
 
 
 
