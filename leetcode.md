@@ -1032,7 +1032,68 @@
       ```
 
       > [查看详情](https://leetcode-cn.com/problems/product-of-array-except-self/solution/chu-zi-shen-yi-wai-shu-zu-de-cheng-ji-by-leetcode-/) | leetcode
-      
+
+### 字符串
+
+**字符**
+
+   1. 给定一个单词，你需要判断单词的大写使用是否正确。
+
+      我们定义，在以下情况时，单词的大写用法是正确的：
+
+      全部字母都是大写，比如"USA"。
+      单词中所有字母都不是大写，比如"leetcode"。
+      如果单词不只含有一个字母，只有首字母大写， 比如 "Google"。
+      否则，我们定义这个单词没有正确使用大写字母。
+
+      ```
+      输入: "USA"
+      输出: True
+      ```
+
+      ```js
+      const detectCapitalUse = (word) => {
+         let len = word.length, count = 0;
+         for(let i = 1; i < len; i++) {
+             if(word[i] === word[i].toUpperCase()) count++;
+         }
+         if(count === 0 || (count === len - 1 && word[0].toUpperCase() === word[0])) return true;
+         return false; 
+      };
+      ```
+
+      > [查看详情](https://leetcode-cn.com/problems/detect-capital/solution/ctong-ji-da-xiao-xie-zi-mu-hou-pan-duan-psly2/) | leetcode
+
+**回文串的定义**
+
+   1. 给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
+
+      说明：本题中，我们将空字符串定义为有效的回文串。
+
+      ```
+      输入: "A man, a plan, a canal: Panama"
+      输出: true
+      ```
+
+      ```js
+      const isPalindrome = (s) => {
+         const _s = s.toLowerCase().match(/[0-9A-Za-z]/g);
+         if (_s == null) return true;
+         let i = 0, j = _s.length - 1;
+         while (i < j) {
+            if (_s[i] !== _s[j]) return false;
+            i++;
+            j--;
+         }
+         return true;
+      };
+      ```
+
+      > [查看详情](https://leetcode-cn.com/problems/valid-palindrome/solution/yan-zheng-hui-wen-chuan-by-leetcode-solution/) | leetcode
+
+
+
+
 
 
 
