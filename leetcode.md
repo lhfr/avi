@@ -1232,6 +1232,39 @@
       ```
       > [查看详情](https://leetcode-cn.com/problems/reverse-string-ii/solution/fan-zhuan-zi-fu-chuan-ii-by-leetcode/) | leetcode
 
+   3. 给定一个字符串，你需要反转字符串中每个单词的字符顺序，同时仍保留空格和单词的初始顺序。
+
+      ```
+      输入："Let's take LeetCode contest"
+      输出："s'teL ekat edoCteeL tsetnoc"
+      ```
+
+      ```js
+      const reverse = (arr, start, end) => {
+        while (start < end) {
+          [arr[start], arr[end]] = [arr[end], arr[start]];
+          start++;
+          end--;
+        }
+        return arr;
+      }     
+
+      const reverseWords = (s) => {
+        const arr = s.split('');
+        for (let i = 0, _i = 0, len = arr.length; i < len; i++) {
+          if (arr[i] === ' ' || i === len - 1) {
+            let j = arr[i] === ' ' ? i - 1 : i;
+            reverse(arr, _i, j);
+            _i = i + 1;
+          }
+        }
+        return arr.join('');
+      };
+      ```
+      
+      > [查看详情](https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/) | leetcode
+
+
 
 
 
