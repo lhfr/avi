@@ -1140,8 +1140,8 @@
       const countSegments = (s) => {
         let count = 0;
         for (let i = 0, len = s.length; i < len; i++) {
-          const prev = s[i - 1], next = s[i];
-          if ((i === 0 || prev === ' ') && next !== ' ') count++;
+          const prev = s[i - 1], cur = s[i];
+          if ((i === 0 || prev === ' ') && cur !== ' ') count++;
         }
         return count;
       };
@@ -1149,8 +1149,29 @@
 
       > [查看详情](https://leetcode-cn.com/problems/number-of-segments-in-a-string/solution/zi-fu-chuan-zhong-de-dan-ci-shu-by-leetcode/) | leetcode
 
+   2. 给你一个字符串 s，由若干单词组成，单词之间用空格隔开。返回字符串中最后一个单词的长度。如果不存在最后一个单词，请返回 0 。
 
+      单词 是指仅由字母组成、不包含任何空格字符的最大子字符串。
 
+      ```
+      输入：s = "Hello World"
+      输出：5
+      ```
+
+      ```js
+      const lengthOfLastWord = (s) => {
+        let count = 0;
+        for (let len = s.length, i = len - 1; i >= 0; i--) {
+          const cur = s[i], next = s[i - 1];
+          if (cur === ' ') continue;
+          count++;
+          if (next === ' ') break;
+        }
+        return count;
+      };
+      ```
+
+      > [查看详情](https://leetcode-cn.com/problems/length-of-last-word/solution/hua-jie-suan-fa-58-zui-hou-yi-ge-dan-ci-de-chang-d/) | leetcode
 
 
 
