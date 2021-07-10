@@ -1303,6 +1303,39 @@
 
       > [查看详情](https://leetcode-cn.com/problems/reverse-words-in-a-string/solution/fan-zhuan-zi-fu-chuan-li-de-dan-ci-by-leetcode-sol/) | leetcode
 
+**字符的统计**
+
+   1. 给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回 -1。
+
+      ```
+      s = "leetcode"
+      返回 0     
+
+      s = "loveleetcode"
+      返回 2
+      ```
+
+      ```js
+      const firstUniqChar = (s) => {
+        const obj = {};
+        let target = -1;
+        for (let v of s) {
+          obj[v] = obj[v] ? ++obj[v] : 1;
+        }
+        for (let i = 0, len = s.length; i < len; i++) {
+          if (obj[s[i]] === 1) {
+            target = i;
+            break;
+          } 
+        }
+        return target;
+      };
+      ```
+
+   2. 
+
+
+
 
 
 
