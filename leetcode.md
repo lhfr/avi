@@ -1332,7 +1332,71 @@
       };
       ```
 
-   2. 
+      > [查看详情](https://leetcode-cn.com/problems/reverse-words-in-a-string/solution/fan-zhuan-zi-fu-chuan-li-de-dan-ci-by-leetcode-sol/) | leetcode
+
+   2. 给定两个字符串 s 和 t，它们只包含小写字母。
+
+      字符串 t 由字符串 s 随机重排，然后在随机位置添加一个字母。
+
+      请找出在 t 中被添加的字母。   
+
+      ```
+      输入：s = "abcd", t = "abcde"
+      输出："e"
+      解释：'e' 是那个被添加的字母。
+      ```
+
+      ```js
+      const findTheDifference = (s, t) => {
+        const obj = {};
+        for (let v of s) {
+          obj[v] = obj[v] ? ++obj[v] : 1;
+        }
+        for (let v of t) {
+          if (obj[v]) {
+            --obj[v];
+            if (obj[v] < 0) return v;
+          } else {
+            return v;
+          }
+        }
+      };
+      ```
+
+      > [查看详情](https://leetcode-cn.com/problems/find-the-difference/solution/zhao-bu-tong-by-leetcode-solution-mtqf/) | leetcode
+
+   3. 给定一个赎金信 (ransom) 字符串和一个杂志(magazine)字符串，判断第一个字符串 ransom 能不能由第二个字符串 magazines 里面的字符构成。如果可以构成，返回 true ；否则返回 false。
+
+      (题目说明：为了不暴露赎金信字迹，要从杂志上搜索各个需要的字母，组成单词来表达意思。杂志字符串中的每个字符只能在赎金信字符串中使用一次。)
+
+      ```
+      输入：ransomNote = "a", magazine = "b"
+      输出：false
+      ```
+
+      ```js
+      const canConstruct = (ransomNote, magazine) => {
+        const obj = {};
+        for (let v of magazine) {
+          obj[v] = obj[v] ? ++obj[v] : 1;
+        }
+        for (let v of ransomNote) {
+          if (obj[v]) {
+            --obj[v];
+            if (obj[v] < 0) return false;
+          } else {
+            return false;
+          }
+        }
+        return true;
+      };
+      ```
+
+      > [查看详情](https://leetcode-cn.com/problems/ransom-note/solution/ji-lu-zi-mu-de-chu-xian-ci-shu-bing-bi-j-zksx/) | leetcode
+
+
+
+
 
 
 
