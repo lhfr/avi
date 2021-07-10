@@ -1140,8 +1140,8 @@
       const countSegments = (s) => {
         let count = 0;
         for (let i = 0, len = s.length; i < len; i++) {
-          const prev = s[i - 1], cur = s[i];
-          if ((i === 0 || prev === ' ') && cur !== ' ') count++;
+          const cur = s[i], next = s[i + 1];
+          if (cur !== ' ' && (next === ' ' || i === len - 1)) count++;
         }
         return count;
       };
