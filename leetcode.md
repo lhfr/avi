@@ -1394,6 +1394,34 @@
 
       > [查看详情](https://leetcode-cn.com/problems/ransom-note/solution/ji-lu-zi-mu-de-chu-xian-ci-shu-bing-bi-j-zksx/) | leetcode
 
+   4. 给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。
+
+      ```
+      输入: s = "anagram", t = "nagaram"
+      输出: true
+      ```
+
+      ```js
+      const isAnagram = (s, t) => {
+        if (s.length !== t.length) return false;
+        const obj = {};
+        for (let v of s) {
+          obj[v] = obj[v] ? ++obj[v] : 1;
+        }
+        for (let v of t) {
+          if (obj[v]) {
+            --obj[v];
+            if (obj[v] < 0) return false;
+          } else {
+            return false;
+          }
+        }
+        return true;
+      };
+      ```
+      
+      > [查看详情](https://leetcode-cn.com/problems/valid-anagram/solution/you-xiao-de-zi-mu-yi-wei-ci-de-ke-shi-hu-7gca/) | leetcode 
+
 
 
 
