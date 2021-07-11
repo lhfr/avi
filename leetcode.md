@@ -1419,10 +1419,34 @@
         return true;
       };
       ```
-      
-      > [查看详情](https://leetcode-cn.com/problems/valid-anagram/solution/you-xiao-de-zi-mu-yi-wei-ci-de-ke-shi-hu-7gca/) | leetcode 
+
+      > [查看详情](https://leetcode-cn.com/problems/valid-anagram/solution/you-xiao-de-zi-mu-yi-wei-ci-by-leetcode-solution/) | leetcode 
 
 
+   5. 给定一个字符串数组，将字母异位词组合在一起。字母异位词指字母相同，但排列不同的字符串。
+
+      ```
+      输入: ["eat", "tea", "tan", "ate", "nat", "bat"]
+      输出:
+      [
+        ["ate","eat","tea"],
+        ["nat","tan"],
+        ["bat"]
+      ]
+      ```
+
+      ```js
+      const groupAnagrams = (strs) => {
+        const obj = {};
+        for (let v of strs) {
+          const _v = Array.from(v).sort().toString();
+          obj[_v] ? obj[_v].push(v) : obj[_v] = [v];
+        }
+        return Object.values(obj);
+      };
+      ```
+
+      > [查看详情](https://leetcode-cn.com/problems/group-anagrams/solution/zi-mu-yi-wei-ci-fen-zu-by-leetcode-solut-gyoc/) | leetcode 
 
 
 
