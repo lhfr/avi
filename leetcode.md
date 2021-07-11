@@ -1479,6 +1479,52 @@
       
       > [查看详情](https://leetcode-cn.com/problems/sort-characters-by-frequency/solution/gen-ju-zi-fu-chu-xian-pin-lu-pai-xu-by-l-zmvy/) | leetcode 
 
+   7. 给定一个非空字符串，其中包含字母顺序打乱的英文单词表示的数字0-9。按升序输出原始的数字。
+
+      注意:      
+
+      输入只包含小写英文字母。
+      输入保证合法并可以转换为原始的数字，这意味着像 "abc" 或 "zerone" 的输入是不允许的。
+      输入字符串的长度小于 50,000。
+
+      ```
+      输入: "owoztneoer"
+
+      输出: "012" (zeroonetwo)
+      ```
+
+      ```js
+      const countDigits = (str, arr) => {
+        const obj = {};
+        for (let v of arr) {
+          obj[v] = 0;
+        }
+        for (let v of str) {
+          ++obj[v];
+        }
+        return obj;
+      }     
+
+      const originalDigits = (s) => {
+        const digits = ['z', 'o', 'w', 'h', 'u', 'f', 'x', 's', 'g', 'i'];
+        const obj = countDigits(s, digits);
+        obj['h'] -= obj['g'];
+        obj['f'] -= obj['u'];
+        obj['s'] -= obj['x'];
+        obj['i'] -= (obj['f'] + obj['x'] + obj['g']);
+        obj['o'] -= (obj['z'] + obj['w'] + obj['u']);
+        let str = '';
+        for (let i = 0, len = digits.length; i < len; i++) {
+          str += i.toString().repeat(obj[digits[i]]);
+        }
+        return str;
+      };
+      ```
+
+      > [查看详情](https://leetcode-cn.com/problems/reconstruct-original-digits-from-english/solution/cong-ying-wen-zhong-zhong-jian-shu-zi-by-leetcode/) | leetcode 
+      
+   8. 
+
 
 
 
