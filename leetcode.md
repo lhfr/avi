@@ -1448,6 +1448,38 @@
 
       > [查看详情](https://leetcode-cn.com/problems/group-anagrams/solution/zi-mu-yi-wei-ci-fen-zu-by-leetcode-solut-gyoc/) | leetcode 
 
+   6. 给定一个字符串，请将字符串里的字符按照出现的频率降序排列。
+
+      ```
+      输入:
+      "tree"      
+
+      输出:
+      "eert"      
+
+      解释:
+      'e'出现两次，'r'和't'都只出现一次。
+      因此'e'必须出现在'r'和't'之前。此外，"eetr"也是一个有效的答案。
+      ```
+
+      ```js
+      const frequencySort = (s) => {
+        const obj = {};
+        for (let v of s) {
+          obj[v] = obj[v] ? ++obj[v] : 1;
+        }
+        const arr = Object.entries(obj).sort((a, b) => b[1] - a[1]);
+        let str = '';
+        for (let [key, value] of arr) {
+          str += key.repeat(value);
+        }
+        return str;
+      };
+      ```
+      
+      > [查看详情](https://leetcode-cn.com/problems/sort-characters-by-frequency/solution/gen-ju-zi-fu-chu-xian-pin-lu-pai-xu-by-l-zmvy/) | leetcode 
+
+
 
 
 
