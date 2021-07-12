@@ -1552,8 +1552,43 @@
         return x === 0 && y === 0;
       };
       ```
-      
+
       > [查看详情](https://leetcode-cn.com/problems/robot-return-to-origin/solution/ji-qi-ren-neng-fou-fan-hui-yuan-dian-by-leetcode-s/) | leetcode 
+
+   9. 给定一个字符串来代表一个学生的出勤记录，这个记录仅包含以下三个字符：
+
+      'A' : Absent，缺勤
+      'L' : Late，迟到
+      'P' : Present，到场
+      如果一个学生的出勤记录中不超过一个'A'(缺勤)并且不超过两个连续的'L'(迟到),那么这个学生会被奖赏。    
+
+      你需要根据这个学生的出勤记录判断他是否会被奖赏。
+
+      ```
+      输入: "PPALLP"
+      输出: True
+      ```
+
+      ```js
+      const checkRecord = (s) => {
+        let countA = 0, j = -1;
+        for (let i = 0, len = s.length; i < len; i++) {
+          if (s[i] === 'A') {
+            countA++;
+            if (countA === 2) return false;
+          }
+          if (s[i] !== 'L') {
+            j = i;
+          } else {
+            if (i - j === 3) return false;
+          }
+        }
+        return true;
+      };
+      ```
+
+      > [查看详情](https://leetcode-cn.com/problems/student-attendance-record-i/solution/xue-sheng-chu-qin-ji-lu-i-by-leetcode/) | leetcode 
+
 
 
 
