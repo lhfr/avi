@@ -1622,6 +1622,40 @@
 
       > [查看详情](https://leetcode-cn.com/problems/count-binary-substrings/solution/ji-shu-er-jin-zhi-zi-chuan-by-leetcode-solution/) | leetcode 
 
+   11. 把字符串 s 看作是“abcdefghijklmnopqrstuvwxyz”的无限环绕字符串，所以 s 看起来是这样的："...zabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd....". 
+
+      现在我们有了另一个字符串 p 。你需要的是找出 s 中有多少个唯一的 p 的非空子串，尤其是当你的输入是字符串 p ，你需要输出字符串 s 中 p 的不同的非空子串的数目。       
+
+      注意: p 仅由小写的英文字母组成，p 的大小可能超过 10000。
+
+      ```
+      输入: "a"
+      输出: 1
+      解释: 字符串 S 中只有一个"a"子字符。
+      ```
+
+      ```js
+      const findSubstringInWraproundString = (p) => {
+        const obj = { [p[0]]: 1 };
+        let count = 1;
+        for (let i = 1, len = p.length; i < len; i++) {
+          const flag = (p[i].charCodeAt() - p[i - 1].charCodeAt() + 26) % 26 === 1;
+          flag ? count++ : count = 1;
+          obj[p[i]] = obj[p[i]] ? Math.max(obj[p[i]], count) : count;
+        }
+        let res = 0;
+        for (let v of Object.values(obj)) {
+          res += v;
+        }
+        return res;
+      };
+      ```
+
+      > [查看详情](https://leetcode-cn.com/problems/unique-substrings-in-wraparound-string/solution/467-huan-rao-zi-fu-chuan-zhong-wei-yi-de-wnwr/) | leetcode 
+
+   12. 
+
+
 
 
 
