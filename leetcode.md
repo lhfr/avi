@@ -1655,53 +1655,87 @@
 
 **数字与字符串间转换**
 
-   写一个程序，输出从 1 到 n 数字的字符串表示。
+   1. 写一个程序，输出从 1 到 n 数字的字符串表示。
 
-   1. 如果 n 是3的倍数，输出“Fizz”； 
+      如果 n 是3的倍数，输出“Fizz”；    
 
-   2. 如果 n 是5的倍数，输出“Buzz”； 
+      如果 n 是5的倍数，输出“Buzz”；    
 
-   3. 如果 n 同时是3和5的倍数，输出 “FizzBuzz”。
+      如果 n 同时是3和5的倍数，输出 “FizzBuzz”。 
 
-   ```
-   n = 15,
+      ```
+      n = 15,  
 
-   返回:
-   [
-       "1",
-       "2",
-       "Fizz",
-       "4",
-       "Buzz",
-       "Fizz",
-       "7",
-       "8",
-       "Fizz",
-       "Buzz",
-       "11",
-       "Fizz",
-       "13",
-       "14",
-       "FizzBuzz"
-   ]
-   ```
+      返回:
+      [
+          "1",
+          "2",
+          "Fizz",
+          "4",
+          "Buzz",
+          "Fizz",
+          "7",
+          "8",
+          "Fizz",
+          "Buzz",
+          "11",
+          "Fizz",
+          "13",
+          "14",
+          "FizzBuzz"
+      ]
+      ```   
 
-   ```js
-   const fizzBuzz = (n) => {
-      const arr = [], obj = { '3': 'Fizz', '5': 'Buzz' };
-      for (let i = 1; i <= n; i++) {
-         let str = '';
-         for (let v of Object.keys(obj)) {
-            if (i % v === 0) str += obj[v];
+      ```js
+      const fizzBuzz = (n) => {
+         const arr = [], obj = { '3': 'Fizz', '5': 'Buzz' };
+         for (let i = 1; i <= n; i++) {
+            let str = '';
+            for (let v of Object.keys(obj)) {
+               if (i % v === 0) str += obj[v];
+            }
+            if (str === '') str += i;
+            arr.push(str);
          }
-         if (str === '') str += i;
-         arr.push(str);
-      }
-      return arr;
-   };
-   ```
-    
-   > [查看详情](https://leetcode-cn.com/problems/fizz-buzz/solution/fizz-buzz-by-leetcode/) | leetcode 
+         return arr;
+      };
+      ```
+
+      > [查看详情](https://leetcode-cn.com/problems/fizz-buzz/solution/fizz-buzz-by-leetcode/) | leetcode 
+
+   2. 给出 N 名运动员的成绩，找出他们的相对名次并授予前三名对应的奖牌。前三名运动员将会被分别授予 “金牌”，“银牌” 和“ 铜牌”（"Gold Medal", "Silver Medal", "Bronze Medal"）。
+
+      (注：分数越高的选手，排名越靠前。)
+
+      ```
+      输入: [5, 4, 3, 2, 1]
+      输出: ["Gold Medal", "Silver Medal", "Bronze Medal", "4", "5"]
+      解释: 前三名运动员的成绩为前三高的，因此将会分别被授予 “金牌”，“银牌”和“铜牌” ("Gold Medal", "Silver Medal" and "Bronze Medal").
+      余下的两名运动员，我们只需要通过他们的成绩计算将其相对名次即可。
+      ```
+
+      ```js
+      const findRelativeRanks = (score) => {
+         const len = score.length, obj = {};
+         const arr = [...score].sort((a, b) => b - a);
+         for (let i = 0; i < len; i++) {
+            obj[arr[i]] = i + 1;
+         }
+         const res = [];
+         for (let i = 0; i < len; i++) {
+            let v = obj[score[i]];
+            if (v === 1) v = "Gold Medal";
+            if (v === 2) v = "Silver Medal";
+            if (v === 3) v = "Bronze Medal";
+            res[i] = v + '';
+         }
+         return res;
+      };
+      ```
+      
+      > [查看详情](https://leetcode-cn.com/problems/relative-ranks/solution/qiumg-java-jie-zhu-hashmap-by-qiumg-4npy/) | leetcode 
+
+
 
 
 
