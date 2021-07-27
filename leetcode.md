@@ -1732,8 +1732,33 @@
          return res;
       };
       ```
-      
+
       > [查看详情](https://leetcode-cn.com/problems/relative-ranks/solution/qiumg-java-jie-zhu-hashmap-by-qiumg-4npy/) | leetcode 
+
+   3. 给定一个 24 小时制（小时:分钟 "HH:MM"）的时间列表，找出列表中任意两个时间的最小时间差并以分钟数表示。
+
+      ```
+      输入：timePoints = ["23:59","00:00"]
+      输出：1
+      ```
+
+      ```js
+      const findMinDifference = (timePoints) => {
+         const arr = timePoints.map(v => {
+            const target = v.split(':');
+            return Number(target[0]) * 60 + Number(target[1]) * 1;
+         }).sort((a, b) => a - b);
+         const len = arr.length;
+         let min = 1440 + arr[0] - arr[len - 1];
+         for (let i = 1; i < len; i++) {
+            const v = arr[i] - arr[i - 1];
+            if (v < min) min = v;
+         }
+         return min;
+      };
+      ```
+      
+      > [查看详情](https://leetcode-cn.com/problems/minimum-time-difference/solution/wu-nao-jie-fa-by-18753278812-2/) | leetcode 
 
 
 
