@@ -1822,9 +1822,67 @@
 
       > [查看详情](https://leetcode-cn.com/problems/complex-number-multiplication/solution/zheng-ze-biao-da-shi-by-ma-qia-ba-qia-2u-9iim/) | leetcode 
 
+   6. 给定一个表示分数加减运算表达式的字符串，你需要返回一个字符串形式的计算结果。 这个结果应该是不可约分的分数，即最简分数。 如果最终结果是一个整数，例如 2，你需要将它转换成分数形式，其分母为 1。所以在上述例子中, 2 应该被转换为 2/1。
 
+      ```
+      输入:"-1/2+1/2"
+      输出: "0/1"
+      ```
 
+      ```js
+      const leastCommonMultiple = (arr) => {
+         let len = 1
+         for (let v of arr) {
+            len *= v
+         }
+         for (let i = 1; i <= len; i++) {
+            const flag = arr.every(v => i % v === 0)
+            if (flag) return i
+         }
+      }
 
+      const minScore = (a, b) => {
+         const flag = (a / b) < 0 ? -1 : 1;
+         [a, b] = [Math.abs(a), Math.abs(b)]
+         if (a === 0) {
+            b = 1
+         } else {
+            const min = Math.min(a, b)
+            for (let i = min; i >= 2; i--) {
+               if (a % i === 0 && b % i === 0) {
+                  a /= i
+                  b /= i
+               }
+            }
+         }
+         let score = `${a}/${b}`
+         if (flag === -1) score = `-${score}`
+         return score
+      }
+
+      const fractionAddition = (expression) => {
+         const str = expression.split('').map((v, i) => {
+            if (v === '-' || (i === 0 && v !== '-')) v = `+${v}`
+            return v
+         }).join('')
+         const a = [], b = []
+         const arr = str.split('+')
+         arr.forEach((v, i) => {
+            if (i > 0) {
+               const [_a, _b] = v.split('/')
+               a.push(_a)
+               b.push(_b)
+            }
+         })
+         let _a = 0, _b = leastCommonMultiple(b)
+         for (let i = 0, len = a.length; i < len; i++) {
+            _a += a[i] * (_b / b[i])
+         }
+         return minScore(_a, _b)
+      };
+      ```
+
+      > [查看详情](https://leetcode-cn.com/problems/fraction-addition-and-subtraction/solution/fen-shu-jia-jian-yun-suan-by-leetcode/) | leetcode
 
 
 
