@@ -1811,11 +1811,16 @@
       ```
 
       ```js
+      const getNumber = (str) => {
+         const arr = str.split('+')
+         const a = arr[0]
+         const b = arr[1].split('i')[0]
+         return [a, b]
+      }   
+
       const complexNumberMultiply = (num1, num2) => {
-         const reg = /-?\d+/g;
-         const arr1 = num1.match(reg)
-         const arr2 = num2.match(reg)
-         const [a, b, c, d] = [arr1[0], arr1[1], arr2[0], arr2[1]]
+         const [a, b] = getNumber(num1)
+         const [c, d] = getNumber(num2)
          return `${a * c - b * d}+${a * d + b * c}i`
       };
       ```
@@ -1862,17 +1867,15 @@
 
       const fractionAddition = (expression) => {
          const str = expression.split('').map((v, i) => {
-            if (v === '-' || (i === 0 && v !== '-')) v = `+${v}`
+            if (v === '-' && i > 0) v = `+${v}`
             return v
          }).join('')
          const a = [], b = []
          const arr = str.split('+')
          arr.forEach((v, i) => {
-            if (i > 0) {
-               const [_a, _b] = v.split('/')
-               a.push(_a)
-               b.push(_b)
-            }
+            const [_a, _b] = v.split('/')
+            a.push(_a)
+            b.push(_b)
          })
          let _a = 0, _b = leastCommonMultiple(b)
          for (let i = 0, len = a.length; i < len; i++) {
@@ -1884,7 +1887,57 @@
 
       > [查看详情](https://leetcode-cn.com/problems/fraction-addition-and-subtraction/solution/fen-shu-jia-jian-yun-suan-by-leetcode/) | leetcode
 
+   7. 求解一个给定的方程，将x以字符串"x=#value"的形式返回。该方程仅包含'+'，' - '操作，变量 x 和其对应系数。
 
+      如果方程没有解，请返回“No solution”。
+
+      如果方程有无限解，则返回“Infinite solutions”。
+
+      如果方程中只有一个解，要保证返回值 x 是一个整数。
+
+      ```
+      输入: "x+5-3+x=6+x-2"  
+      输出: "x=2"
+      ```
+
+      ```js
+      const getStr = (str) =>
+         str.split('').map((v, i) => {
+            if (v === '-' && i > 0) v = `+${v}`
+            return v
+         }).join('')    
+
+      const getNumber = (str) => {
+         let a = [], b = []
+         const arr = str.split('+')
+         for (let v of arr) {
+            v.includes('x') ? a.push(v) : b.push(v)
+         }
+         a = a.map(v => {
+            v = v.split('x')[0]
+            if (v === '') v = 1
+            if (v === '-') v = -1
+            return parseInt(v)
+         })
+         b = b.map(v => parseInt(v))
+         const _a = a.reduce((a, b) => a + b, 0)
+         const _b = b.reduce((a, b) => a + b, 0)
+         return [_a, _b]
+      }     
+
+      const solveEquation = (equation) => {
+         let [s1, s2] = equation.split('=');
+         [s1, s2] = [getStr(s1), getStr(s2)];
+         const [a, b] = getNumber(s1)
+         const [c, d] = getNumber(s2)
+         if (a - c === 0 && d - b === 0) return "Infinite solutions"
+         if (a - c === 0 && d - b !== 0) return "No solution"
+         const res = (d - b) / (a - c)
+         return `x=${res}`
+      };
+      ```
+
+      > [查看详情](https://leetcode-cn.com/problems/solve-the-equation/solution/qiu-jie-fang-cheng-by-leetcode/) | leetcode
 
 
 
