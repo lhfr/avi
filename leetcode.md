@@ -1609,7 +1609,7 @@
         while (i < n) {
           const num = s[i];
           let count = 0;
-          while (i < n && s[i] === num) {
+          while (s[i] === num) {
             ++i;
             ++count;
           }
@@ -1930,7 +1930,7 @@
          [s1, s2] = [getStr(s1), getStr(s2)];
          const [a, b] = getNumber(s1)
          const [c, d] = getNumber(s2)
-         if (a - c === 0 && d - b === 0) return "Infinite solutions"
+         if (a - c === 0 && d - b === 0) r 
          if (a - c === 0 && d - b !== 0) return "No solution"
          const res = (d - b) / (a - c)
          return `x=${res}`
@@ -1939,7 +1939,61 @@
 
       > [查看详情](https://leetcode-cn.com/problems/solve-the-equation/solution/qiu-jie-fang-cheng-by-leetcode/) | leetcode
 
+   8. 给你一个字符数组 chars ，请使用下述算法压缩：
 
+      从一个空字符串 s 开始。对于 chars 中的每组 连续重复字符 ：
+
+      如果这一组长度为 1 ，则将字符追加到 s 中。
+      否则，需要向 s 追加字符，后跟这一组的长度。
+      压缩后得到的字符串 s 不应该直接返回 ，需要转储到字符数组 chars 中。需要注意的是，如果组长度为 10 或 10 以上，则在 chars 数组中会被拆分为多个字符。
+
+      请在 修改完输入数组后 ，返回该数组的新长度。
+
+      你必须设计并实现一个只使用常量额外空间的算法来解决此问题。
+
+      ```
+      输入：chars = ["a","a","b","b","c","c","c"]
+      输出：返回 6 ，输入数组的前 6 个字符应该是：["a","2","b","2","c","3"]
+      解释：
+      "aa" 被 "a2" 替代。"bb" 被 "b2" 替代。"ccc" 被 "c3" 替代。
+      ```
+
+      ```js
+      const compress = (chars) => {
+         let read = 0,
+            write = 0,
+            left = 0;
+         const len = chars.length
+         while (read < len) {
+            if (chars[read] !== chars[read + 1]) {
+               chars[write++] = chars[read];
+               let ins = read - left + 1;
+               if (ins > 1) {
+                  // 常量空间复杂度
+                  const swap_l = write;
+                  while (ins > 0) {
+                     chars[write++] = ins % 10 + '';
+                     ins = Math.floor(ins / 10);
+                  }
+                  swap(chars, swap_l, write - 1);
+               }
+               left = read + 1;
+            }
+            read++;
+         }
+         return write;
+      };
+
+      const swap = (chars, left, right) => {
+         while (left < right) {
+            [chars[left], chars[right]] = [chars[right], chars[left]];
+            left++;
+            right--;
+         }
+      }
+      ```
+      
+      > [查看详情](https://leetcode-cn.com/problems/string-compression/solution/ya-suo-zi-fu-chuan-by-leetcode-solution-kbuc/) | leetcode
 
 
 
